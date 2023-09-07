@@ -52,7 +52,7 @@ function App() {
       colorSec: "#FFEEDF"
     }
   ]) 
-  const [mostrarForm, actualizarMostrar] = useState(false);
+  const [mostrarForm, actualizarMostrar] = useState(true);
 
   const [colaboradores, actualizarColaboradores] = useState([
     {
