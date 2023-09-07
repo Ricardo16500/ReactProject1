@@ -53,6 +53,7 @@ function App() {
     }
   ]) 
   const [mostrarForm, actualizarMostrar] = useState(false);
+
   const [colaboradores, actualizarColaboradores] = useState([
     {
       id: uuid(),
@@ -119,6 +120,10 @@ function App() {
     actualizarOption(optionAct);   
   }
 
+  const crearEquipo = (nuevoEquipo) => {
+    console.log(nuevoEquipo);
+    actualizarOption([...option, {...nuevoEquipo, id: uuid()}])
+  }
 
 
 
@@ -130,6 +135,7 @@ function App() {
       {mostrarForm && <Formulario 
       option={option.map((option) => option.titulo)}
       registrarColaborador = {registrarColaborador}
+      crearEquipo = {crearEquipo}
       />  }
      <MiOrg cambiarMostrar={cambiarMostrar}/>
 
