@@ -1,7 +1,7 @@
 .campo-texto{
     margin: 24px 0;
     font-family: 'Montserrat',sans-serif;
-
+    align-items: center;
 }
 .campo-texto label{
     font-family: 'Montserrat',sans-serif; 
