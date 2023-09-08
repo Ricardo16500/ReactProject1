@@ -52,7 +52,7 @@ function App() {
       colorSec: "#FFEEDF"
     }
   ]) 
-  const [mostrarForm, actualizarMostrar] = useState(true);
+  const [mostrarForm, actualizarMostrar] = useState(false);
 
   const [colaboradores, actualizarColaboradores] = useState([
     {
@@ -60,35 +60,40 @@ function App() {
       team: "Frontend",
       photo: "https://github.com/harlandlohora.png",
       name: "Harland Lohora",
-      puesto: "Instructor"
+      puesto: "Instructor",
+      fav: true
      },
     { 
       id: uuid(),
-      team:   "Programacion",
+      team: "Programacion",
       photo: "https://github.com/genesysaluralatam.png",
-      name:  "Genesys Rondón",
-      puesto: "Desarrolladora de software e instructora"
+      name: "Genesys Rondón",
+      puesto: "Desarrolladora de software e instructora",
+      fav: false
     },
     {
       id: uuid(),
       team: "UX/UI",
-      photo:   "https://github.com/JeanmarieAluraLatam.png",
+      photo: "https://github.com/JeanmarieAluraLatam.png",
       name: "Jeanmarie Quijada",
-      puesto: "Instructora en Alura Latam"
+      puesto: "Instructora en Alura Latam",
+      fav: true
     },
     {
       id: uuid(),
-      team:  "Programacion",
-      photo :   "https://github.com/christianpva.png",
-      name:  "Christian Velasco",
-      puesto: "Head de Alura e Instructor"
+      team: "Programacion",
+      photo: "https://github.com/christianpva.png",
+      name: "Christian Velasco",
+      puesto: "Head de Alura e Instructor",
+      fav: false
     },
     {
       id: uuid(),
-      team:  "Innovacion y gestion",
-      photo :   "https://github.com/JoseDarioGonzalezCha.png",
-      name:  "Jose Gonzalez",
-      puesto: "Dev FullStack"
+      team: "Innovacion y gestion",
+      photo: "https://github.com/JoseDarioGonzalezCha.png",
+      name: "Jose Gonzalez",
+      puesto: "Dev FullStack",
+      fav: true
     }
   ]);
   const cambiarMostrar = () =>{
@@ -108,6 +113,7 @@ function App() {
     actualizarColaboradores(nuevosColaboradores);
   }
 
+
   const actualizarColor = (color, id) => {
     console.log("actualizado: ", color , id);
     const optionAct = option.map((option)=>{
@@ -125,6 +131,16 @@ function App() {
     actualizarOption([...option, {...nuevoEquipo, id: uuid()}])
   }
 
+  const like = (id)=> {
+    const colaboradoresAct = colaboradores.map((colaborador)=>{
+      if(colaborador.id === id){
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador 
+    })
+    //console.log("like: ", id);
+    actualizarColaboradores(colaboradoresAct);
+  }
 
 
   return (
@@ -147,6 +163,7 @@ function App() {
          colaboradores = {colaboradores.filter(colaborador => colaborador.team === option.titulo)}
          eliminarColaborador={eliminarColaborador}
          actualizarColor = {actualizarColor}
+         like = {like}
          />
       )
      }
